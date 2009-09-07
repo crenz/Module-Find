@@ -225,9 +225,13 @@ Fixed issue with bugfix in PathTools-3.14.
 
 =item 0.06, 2008-01-26
 
-Module::Find now won't report duplicate modules several times anymore (thanks to Uwe Všlker for the report and the patch)
+Module::Find now won't report duplicate modules several times anymore (thanks to Uwe VÃ¶lker for the report and the patch)
 
 =back
+
+=head1 DEVELOPMENT NOTES
+
+Please report any bugs sing the CPAN RT system. The development repository for this module is hosted on GitHub: L<http://github.com/crenz/Module-Find/>.
 
 =head1 SEE ALSO
 
