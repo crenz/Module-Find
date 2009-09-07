@@ -1,0 +1,19 @@
+--- #YAML:1.0
+name:                Module-Find
+version:             0.06
+abstract:            Find and use installed modules in a (sub)category
+license:             perl
+author:              
+    - Christian Renz <crenz@web42.com>
+generated_by:        ExtUtils::MakeMaker version 6.42
+distribution_type:   module
+requires:     
+    File::Find:                    0
+    File::Spec:                    0
+    Test::More:                    0
+build_requires:
+    Test::Pod:                     1.14
+    Test::Pod::Coverage:           1.04
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
