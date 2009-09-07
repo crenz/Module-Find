@@ -7,15 +7,18 @@ use warnings;
 use File::Spec;
 use File::Find;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 our $basedir = undef;
 our @results = ();
 our $prune = 0;
+our $followMode = 1;
 
 our @ISA = qw(Exporter);
 
 our @EXPORT = qw(findsubmod findallmod usesub useall setmoduledirs);
+
+our @EXPORT_OK = qw(followsymlinks ignoresymlinks);
 
 =head1 NAME
 
@@ -39,6 +42,15 @@ Module::Find - Find and use installed modules in a (sub)category
   
   # set your own search dirs (uses @INC otherwise)
   setmoduledirs(@INC, @plugindirs, $appdir);
+  
+  # not exported by default
+  use Module::Find qw(ignoresymlinks followsymlinks);
+  
+  # ignore symlinks
+  ignoresymlinks();
+  
+  # follow symlinks (default)
+  followsymlinks();
 
 =head1 DESCRIPTION
 
@@ -118,8 +130,7 @@ sub usesub(*) {
 
 =item C<@found = useall Module::Category>
 
-Uses and returns modules found in the Module/Category subdirectories of your perl 
-installation. E.g. C<useall CGI> will return C<CGI::Session> and also 
+Uses and returns modules found in the Module/Category subdirectories of your perl installation. E.g. C<useall CGI> will return C<CGI::Session> and also 
 C<CGI::Session::File> .
 
 =cut
@@ -178,7 +189,8 @@ sub _find(*) {
         	next unless -d $basedir;
     	
         find({wanted   => \&_wanted,
-              no_chdir => 1}, $basedir);
+              no_chdir => 1,
+              follow   => $followMode}, $basedir);
     }
 
     # filter duplicate modules
@@ -187,6 +199,26 @@ sub _find(*) {
 
     @results = map "$category\::$_", @results;
     return @results;
+}
+
+=item C<ignoresymlinks()>
+
+Do not follow symlinks. This function is not exported by default.
+
+=cut
+
+sub ignoresymlinks {
+    $followMode = 0;
+}
+
+=item C<followsymlinks()>
+
+Follow symlinks (default behaviour). This function is not exported by default.
+
+=cut
+
+sub followsymlinks {
+    $followMode = 1;
 }
 
 =back
@@ -226,6 +258,10 @@ Fixed issue with bugfix in PathTools-3.14.
 =item 0.06, 2008-01-26
 
 Module::Find now won't report duplicate modules several times anymore (thanks to Uwe Völker for the report and the patch)
+
+=item 0.07, 2009-09-08
+
+Fixed RT#38302: Module::Find now follows symlinks by default (can be disabled).
 
 =back
 
