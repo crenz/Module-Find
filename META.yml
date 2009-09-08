@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Module-Find
-version:             0.07
+version:             0.08
 version_from:        Find.pm
 abstract:            Find and use installed modules in a (sub)category
 license:             perl

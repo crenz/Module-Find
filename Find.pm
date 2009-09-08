@@ -7,7 +7,7 @@ use warnings;
 use File::Spec;
 use File::Find;
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 our $basedir = undef;
 our @results = ();
