@@ -8,20 +8,23 @@ WriteMakefile1(
         resources => {
             repository => 'http://github.com/crenz/Module-Find',
         },
+        recommends => {
+                'Test::Pod::Coverage' => 1.04,
+                'Test::Pod' => 1.14, #not a build prereq, dist can be built without it
+        },
     },
-    #BUILD_REQUIRES => {
-    #},
+    BUILD_REQUIRES => {
+        'Test::More'  => 0,
+    },
 
     NAME              => 'Module::Find',
     VERSION_FROM      => 'Find.pm', # finds $VERSION
     PREREQ_PM         => {
-        'Test::More'  => 0,
         'File::Find'  => 0,
         'File::Spec'  => 0}, 
     ABSTRACT_FROM  => 'Find.pm', # retrieve abstract from module
     AUTHOR         => 'Christian Renz <crenz@web42.com>',
     LICENSE        => 'perl',
-    NO_META        => 1 # or else our build prereqs will be gone
 );
 
 sub WriteMakefile1 {  #Written by Alexandr Ciornii, version 0.21. Added by eumm-upgrade.
