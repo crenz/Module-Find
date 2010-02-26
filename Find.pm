@@ -7,7 +7,7 @@ use warnings;
 use File::Spec;
 use File::Find;
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 our $basedir = undef;
 our @results = ();
@@ -263,11 +263,19 @@ Module::Find now won't report duplicate modules several times anymore (thanks to
 
 Fixed RT#38302: Module::Find now follows symlinks by default (can be disabled).
 
+=item 0.08, 2009-09-08
+
+Fixed RT#49511: Removed Mac OS X extended attributes from distribution
+
+=item 0.09, 2010-02-26
+
+Fixed RT#38302: Fixed META.yml generation (thanks very much to cpanservice for the help).
+
 =back
 
 =head1 DEVELOPMENT NOTES
 
-Please report any bugs sing the CPAN RT system. The development repository for this module is hosted on GitHub: L<http://github.com/crenz/Module-Find/>.
+Please report any bugs using the CPAN RT system. The development repository for this module is hosted on GitHub: L<http://github.com/crenz/Module-Find/>.
 
 =head1 SEE ALSO
 
