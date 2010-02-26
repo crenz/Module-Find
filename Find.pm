@@ -289,7 +289,7 @@ Christian Renz, E<lt>crenz@web42.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2008 by Christian Renz <crenz@web42.com>. All rights reserved.
+Copyright 2004-2010 by Christian Renz <crenz@web42.com>. All rights reserved.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
