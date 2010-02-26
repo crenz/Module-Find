@@ -7,7 +7,7 @@ use warnings;
 use File::Spec;
 use File::Find;
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 our $basedir = undef;
 our @results = ();
@@ -272,6 +272,10 @@ Fixed RT#49511: Removed Mac OS X extended attributes from distribution
 =item 0.09, 2010-02-26
 
 Fixed RT#38302: Fixed META.yml generation (thanks very much to cpanservice for the help).
+
+=item 0.10, 2010-02-26
+
+Fixed RT#55010: Removed Unicode BOM from Find.pm.
 
 =back
 
