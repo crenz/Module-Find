@@ -20,6 +20,8 @@ our @EXPORT = qw(findsubmod findallmod usesub useall setmoduledirs);
 
 our @EXPORT_OK = qw(followsymlinks ignoresymlinks);
 
+=encoding utf-8
+
 =head1 NAME
 
 Module::Find - Find and use installed modules in a (sub)category
