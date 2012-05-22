@@ -179,7 +179,7 @@ sub _find(*) {
     my $dir = File::Spec->catdir(split(/::/, $category));
 
     my @dirs;
-    if (defined @Module::Find::ModuleDirs) {
+    if (@Module::Find::ModuleDirs) {
         @dirs = map { File::Spec->catdir($_, $dir) }
             @Module::Find::ModuleDirs;
     } else {
