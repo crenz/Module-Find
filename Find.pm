@@ -7,7 +7,7 @@ use warnings;
 use File::Spec;
 use File::Find;
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 our $basedir = undef;
 our @results = ();
@@ -277,6 +277,10 @@ Fixed RT#38302: Fixed META.yml generation (thanks very much to cpanservice for t
 
 Fixed RT#55010: Removed Unicode BOM from Find.pm.
 
+=item 0.11, 2012-05-22
+
+Fixed RT#74251: defined(@array) is deprecated under Perl 5.15.7.
+
 =back
 
 =head1 DEVELOPMENT NOTES
@@ -293,7 +297,7 @@ Christian Renz, E<lt>crenz@web42.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2010 by Christian Renz <crenz@web42.com>. All rights reserved.
+Copyright 2004-2012 by Christian Renz <crenz@web42.com>. All rights reserved.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
