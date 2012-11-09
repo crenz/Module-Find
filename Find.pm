@@ -200,6 +200,11 @@ sub _find(*) {
     @results = grep { not $seen{$_}++ } @results;
 
     @results = map "$category\::$_", @results;
+
+    @results = map {
+         ($_ =~ m{^(\w+(?:::\w+)*)$})[0] || die "$_ does not look like a package name"
+    } @results;
+
     return @results;
 }
 
