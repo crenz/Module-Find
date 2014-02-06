@@ -12,6 +12,8 @@ t/3-usesub.t
 t/4-useall.t
 t/5-setmoduledirs.t
 t/6-duplicate-modules.t
+t/7-symlinks.t
+t/8-taint.t
 t/pod-coverage.t
 t/pod.t
 test/duplicates/ModuleFindTest.pm

@@ -7,7 +7,7 @@ use warnings;
 use File::Spec;
 use File::Find;
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 our $basedir = undef;
 our @results = ();
@@ -78,7 +78,7 @@ default behaviour.
 =cut
 
 sub setmoduledirs {
-    return @Module::Find::ModuleDirs = @_;
+    return @Module::Find::ModuleDirs = grep { defined } @_;
 }
 
 =item C<@found = findsubmod Module::Category>
@@ -115,6 +115,8 @@ Uses and returns modules found in the Module/Category subdirectories of your per
 installation. E.g. C<usesub CGI> will return C<CGI::Session>, but 
 not C<CGI::Session::File> .
 
+If any module dies during loading, usesub will also die at this point.
+
 =cut
 
 sub usesub(*) {
@@ -134,6 +136,8 @@ sub usesub(*) {
 
 Uses and returns modules found in the Module/Category subdirectories of your perl installation. E.g. C<useall CGI> will return C<CGI::Session> and also 
 C<CGI::Session::File> .
+
+If any module dies during loading, useall will also die at this point.
 
 =cut
 
@@ -285,6 +289,19 @@ Fixed RT#55010: Removed Unicode BOM from Find.pm.
 =item 0.11, 2012-05-22
 
 Fixed RT#74251: defined(@array) is deprecated under Perl 5.15.7.
+Thanks to Roman F, who contributed the implementation.
+
+=item 0.12, 2014-02-08
+
+Fixed RT#81077: useall fails in taint mode
+Thanks to Aran Deltac, who contributed the implementation and test.
+
+Fixed RT#83596: Documentation doesn't describe behaviour if a module fails to load
+Clarified documentation for useall and usesub.
+
+Fixed RT#62923: setmoduledirs(undef) doesn't reset to searching @INC
+Added more explicit tests.
+Thanks to Colin Robertson for his input.
 
 =back
 
@@ -302,7 +319,7 @@ Christian Renz, E<lt>crenz@web42.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2012 by Christian Renz <crenz@web42.com>. All rights reserved.
+Copyright 2004-2014 by Christian Renz <crenz@web42.com>. All rights reserved.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
