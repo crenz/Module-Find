@@ -16,6 +16,7 @@ t/7-symlinks.t
 t/8-taint.t
 t/pod-coverage.t
 t/pod.t
+t/meta.t
 test/duplicates/ModuleFindTest.pm
 test/duplicates/ModuleFindTest/SubMod.pm
 test/duplicates/ModuleFindTest/SubMod/SubSubMod.pm

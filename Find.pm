@@ -7,7 +7,7 @@ use warnings;
 use File::Spec;
 use File::Find;
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 our $basedir = undef;
 our @results = ();
@@ -302,6 +302,14 @@ Clarified documentation for useall and usesub.
 Fixed RT#62923: setmoduledirs(undef) doesn't reset to searching @INC
 Added more explicit tests.
 Thanks to Colin Robertson for his input.
+
+=item 0.13, 2015-03-09
+
+This release contains two contributions from Moritz Lenz:
+- Link to Module::Pluggable and Class::Factory::Util in "SEE ALSO"
+- Align package name parsing with how perl does it (allowing single quotes as module separator)
+
+Added test for meta.yml
 
 =back
 
