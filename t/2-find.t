@@ -1,4 +1,4 @@
-use Test::More tests => 5;
+use Test::More tests => 7;
 
 use Module::Find;
 
@@ -17,6 +17,8 @@ ok($#l == 1);
 ok($l[0] eq 'ModuleFindTest::SubMod');
 ok($l[1] eq 'ModuleFindTest::SubMod::SubSubMod');
 
-
+@l = findallmod "ModuleFindTest'SubMod";
+is($#l, 0, 'Found one module');
+is($l[0], "ModuleFindTest'SubMod::SubSubMod");
 
 

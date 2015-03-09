@@ -180,7 +180,7 @@ sub _find(*) {
     my ($category) = @_;
     return undef unless defined $category;
 
-    my $dir = File::Spec->catdir(split(/::/, $category));
+    my $dir = File::Spec->catdir(split(/::|'/, $category));
 
     my @dirs;
     if (@Module::Find::ModuleDirs) {
@@ -206,7 +206,7 @@ sub _find(*) {
     @results = map "$category\::$_", @results;
 
     @results = map {
-         ($_ =~ m{^(\w+(?:::\w+)*)$})[0] || die "$_ does not look like a package name"
+         ($_ =~ m{^(\w+(?:(?:::|')\w+)*)$})[0] || die "$_ does not look like a package name"
     } @results;
 
     return @results;
