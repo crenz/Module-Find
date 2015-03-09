@@ -311,7 +311,7 @@ Please report any bugs using the CPAN RT system. The development repository for 
 
 =head1 SEE ALSO
 
-L<perl>
+L<perl>, L<Module::Pluggable>, L<Class::Factory::Util>
 
 =head1 AUTHOR
 
