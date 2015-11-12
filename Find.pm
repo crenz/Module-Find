@@ -165,7 +165,7 @@ sub _wanted {
         return;
     }
 
-    return unless /\.pm$/ && -r;
+    return unless /\.pm$/;
 
     $name =~ s|\.pm$||;
     $name = join('::', File::Spec->splitdir($name));
