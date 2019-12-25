@@ -5,10 +5,10 @@ use Test::More tests => 13;
 
 use Module::Find qw(ignoresymlinks followsymlinks findsubmod findallmod);
 
-use lib qw(./test);
+use lib qw(./t/test);
 
 my $dirName = "ModuleFindTest";
-my $linkName = "./test/ModuleFindTestSymLink";
+my $linkName = "./t/test/ModuleFindTestSymLink";
 
 SKIP: {
     eval { symlink($dirName, $linkName) };

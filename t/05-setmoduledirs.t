@@ -17,7 +17,7 @@ ok($#l == -1);
 
 # Then, including our directory
 
-setmoduledirs('./test');
+setmoduledirs('./t/test');
 ok($#Module::Find::ModuleDirs == 0);
 
 @l = findsubmod ModuleFindTest;
@@ -42,7 +42,7 @@ ok($#l == -1);
 
 # Fourth, including our directory again
 
-setmoduledirs('./test');
+setmoduledirs('./t/test');
 ok($#Module::Find::ModuleDirs == 0);
 
 @l = findsubmod ModuleFindTest;

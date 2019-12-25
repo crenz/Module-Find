@@ -5,7 +5,7 @@ use Test::More tests => 5;
 
 use Module::Find;
 
-use lib qw(./test);
+use lib qw(./t/test);
 
 my @l;
 
