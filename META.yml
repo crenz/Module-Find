@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Module-Find
-version:            0.13
+version:            0.14
 abstract:           Find and use installed modules in a (sub)category
 author:
     - Christian Renz <crenz@web42.com>

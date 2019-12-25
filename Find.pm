@@ -7,7 +7,7 @@ use warnings;
 use File::Spec;
 use File::Find;
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 our $basedir = undef;
 our @results = ();
@@ -315,6 +315,16 @@ This release contains two contributions from Moritz Lenz:
 - Align package name parsing with how perl does it (allowing single quotes as module separator)
 
 Added test for meta.yml
+
+=item 0.14, 2019-12-25
+
+A long overdue update. Thank you for the many contributions!
+
+- Fixed RT#99055: Removed file readability check (pull request contributed by Moritz Lenz)
+- Now supports @INC hooks (pull request contributed by Graham Knop)
+- Now filters out filenames starting with a dot (pull request contributed by Desmond Daignault)
+- Now uses strict (pull request contributed by Shlomi Fish)
+- Fixed RT#122016: test/ files show up in metacpan (bug report contributed by Karen Etheridge)
 
 =back
 
