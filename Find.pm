@@ -158,7 +158,7 @@ sub useall(*) {
 # you know, this would be a nice application for currying...
 sub _wanted {
     my $name = File::Spec->abs2rel($_, $basedir);
-    return unless $name && $name ne File::Spec->curdir();
+    return unless $name && $name ne File::Spec->curdir() && substr($name, 0, 1) ne '.';
 
     if (-d && $prune) {
         $File::Find::prune = 1;
