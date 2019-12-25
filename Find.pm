@@ -195,7 +195,7 @@ sub _find(*) {
             }
         }
         else {
-            my $basedir = File::Spec->catdir($inc, $dir);
+            our $basedir = File::Spec->catdir($inc, $dir);
 
             next unless -d $basedir;
             find({wanted   => \&_wanted,
