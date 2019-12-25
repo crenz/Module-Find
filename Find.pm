@@ -182,21 +182,26 @@ sub _find(*) {
 
     my $dir = File::Spec->catdir(split(/::|'/, $category));
 
-    my @dirs;
-    if (@Module::Find::ModuleDirs) {
-        @dirs = map { File::Spec->catdir($_, $dir) }
-            @Module::Find::ModuleDirs;
-    } else {
-        @dirs = map { File::Spec->catdir($_, $dir) } @INC;
-    }
     @results = ();
 
-    foreach $basedir (@dirs) {
-        	next unless -d $basedir;
-    	
-        find({wanted   => \&_wanted,
-              no_chdir => 1,
-              follow   => $followMode}, $basedir);
+    foreach my $inc (@Module::Find::ModuleDirs ? @Module::Find::ModuleDirs : @INC) {
+        if (ref $inc) {
+            if (my @files = eval { $inc->files }) {
+                push @results,
+                    map { s/^\Q$category\E::// ? $_ : () }
+                    map { s{/}{::}g; s{\.pm$}{}; $_ }
+                    grep { /\.pm$/ }
+                    @files;
+            }
+        }
+        else {
+            our $basedir = File::Spec->catdir($inc, $dir);
+
+            next unless -d $basedir;
+            find({wanted   => \&_wanted,
+                  no_chdir => 1,
+                  follow   => $followMode}, $basedir);
+        }
     }
 
     # filter duplicate modules
