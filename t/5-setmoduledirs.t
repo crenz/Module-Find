@@ -1,3 +1,6 @@
+use strict;
+use warnings;
+
 use Test::More tests => 18;
 
 use Module::Find;
@@ -6,7 +9,7 @@ use Module::Find;
 
 ok($#Module::Find::ModuleDirs == -1);
 
-@l = findsubmod ModuleFindTest;
+my @l = findsubmod ModuleFindTest;
 ok($#l == -1);
 
 @l = findallmod ModuleFindTest;
