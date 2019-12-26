@@ -1,0 +1,16 @@
+language: "perl"
+perl:
+  - "5.30"
+  - "5.20"
+  - "5.10"
+  - "5.8"
+
+before_install: # optional dependencies
+    - cpanm Test::Pod 
+    - cpanm Test::Pod::Coverage 
+    - cpanm Test::CPAN::Meta
+
+install:
+    - cpanm -v --installdeps --notest .
+
+script: "perl Makefile.PL; make test"
