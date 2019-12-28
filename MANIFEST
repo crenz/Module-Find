@@ -17,6 +17,7 @@ t/08-taint.t
 t/09-inc-hook.t
 t/10-wrong-module-sub.t
 t/11-wrong-module-all.t
+t/12-loadfail.t
 t/50-meta.t
 t/51-pod.t
 t/52-pod-coverage.t
