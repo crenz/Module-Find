@@ -1,8 +1,8 @@
 name: Periodically run tests (matrixed on latest)
 
 on:
-  # Run every four months
-  schedule: '0 5 15 3/4 *'
+  schedule: 
+    cron: 0 5 15 3/4 *
   workflow_dispatch:
 
 jobs:
