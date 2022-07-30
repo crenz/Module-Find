@@ -1,0 +1,112 @@
+name: List available versions of Perl
+
+on:
+  workflow_dispatch:
+
+jobs:
+  listubuntu:
+    name: Perl versions on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: shogo82148/actions-setup-perl@v1
+      - id: set-matrix
+        name: list available perl versions
+        shell: perl {0}
+        run: |
+          use Actions::Core;
+          set_output(matrix => {perl => [perl_versions()]});
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+  runubuntu:
+    runs-on: ubuntu-latest
+    needs: listubuntu
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.listubuntu.outputs.matrix)}}
+    steps:
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: ${{ matrix.perl }}
+      - run: perl -V
+
+  listmacos:
+    name: Perl versions on MacOS
+    runs-on: macos-latest
+    steps:
+      - uses: shogo82148/actions-setup-perl@v1
+      - id: set-matrix
+        name: list available perl versions
+        shell: perl {0}
+        run: |
+          use Actions::Core;
+          set_output(matrix => {perl => [perl_versions()]});
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+  runmacos:
+    runs-on: macos-latest
+    needs: listmacos
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.listmacos.outputs.matrix)}}
+    steps:
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: ${{ matrix.perl }}
+      - run: perl -V
+
+  listwindows:
+    name: Perl versions on Windows
+    runs-on: windows-latest
+    steps:
+      - uses: shogo82148/actions-setup-perl@v1
+      - id: set-matrix
+        name: list available perl versions
+        shell: perl {0}
+        run: |
+          use Actions::Core;
+          set_output(matrix => {perl => [perl_versions()]});
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+  runwindows:
+    runs-on: windows-latest
+    needs: listmacos
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.listwindows.outputs.matrix)}}
+    steps:
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: ${{ matrix.perl }}
+      - run: perl -V
+
+  listwindowsstrawberry:
+    name: Perl versions on Windows
+    runs-on: windows-latest
+    steps:
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          distribution: strawberry
+      - id: set-matrix
+        name: list available perl versions
+        shell: perl {0}
+        run: |
+          use Actions::Core;
+          set_output(matrix => {perl => [perl_versions()]});
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+  runwindowsstrawberry:
+    runs-on: windows-latest
+    needs: listmacos
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.listwindowsstrawberry.outputs.matrix)}}
+    steps:
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: ${{ matrix.perl }}
+          distribution: strawberry
+      - run: perl -V
