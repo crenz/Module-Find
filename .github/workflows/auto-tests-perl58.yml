@@ -1,4 +1,4 @@
-name: Manually run Tests (perl 5.8, Ubuntu/Mac)
+name: Automatically run Tests (perl 5.8, Ubuntu/Mac)
 
 on:
   push:
