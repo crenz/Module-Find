@@ -15,8 +15,8 @@ SKIP: {
     skip "Symlinks not supported on this system", 14 if $@;
     skip "Unable to create symlink", 14 if $r == 0;
 
-    # Ensure link was created
-    ok(-e $linkName);
+    # Ensure link was created and is actually a symlink
+    ok(-l $linkName);
 
     my @l;
 
