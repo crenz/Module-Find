@@ -23,4 +23,4 @@ jobs:
       - name: Build module
         run: perl Makefile.PL
       - name: Run tests
-        run: prove -lv t
+        run: make test TEST_VERBOSE=1
