@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 13;
+use Test::More tests => 14;
 
 use Module::Find qw(ignoresymlinks followsymlinks findsubmod findallmod);
 
@@ -12,8 +12,11 @@ my $linkName = "./t/test/ModuleFindTestSymLink";
 
 SKIP: {
     my $r = eval { symlink($dirName, $linkName) };
-    skip "Symlinks not supported on this system", 13 if $@;
-    skip "Unable to create symlink", 13 if $r == 0;
+    skip "Symlinks not supported on this system", 14 if $@;
+    skip "Unable to create symlink", 14 if $r == 0;
+
+    # Ensure link was created
+    ok(-e $linkName);
 
     my @l;
 
