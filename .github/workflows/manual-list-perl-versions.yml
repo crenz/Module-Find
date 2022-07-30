@@ -61,6 +61,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: shogo82148/actions-setup-perl@v1
+        with: 
+          distribution: default
       - id: set-matrix
         name: list available perl versions
         shell: perl {0}
@@ -80,6 +82,7 @@ jobs:
       - uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: ${{ matrix.perl }}
+          distribution: default
       - run: perl -V
 
   listwindowsstrawberry:
