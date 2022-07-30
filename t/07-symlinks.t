@@ -11,11 +11,12 @@ my $dirName = "ModuleFindTest";
 my $linkName = "./t/test/ModuleFindTestSymLink";
 
 SKIP: {
-    eval { symlink($dirName, $linkName) };
+    my $r = eval { symlink($dirName, $linkName) };
     skip "Symlinks not supported on this system", 13 if $@;
+    skip "Unable to create symlink", 13 if $r == 0;
 
     my @l;
-    
+
     # Default behaviour: follow symlinks -----------------------
     @l = findsubmod ModuleFindTestSymLink;    
     ok($#l == 0);
@@ -48,7 +49,6 @@ SKIP: {
     ok($l[1] eq 'ModuleFindTestSymLink::SubMod::SubSubMod');
 
     
-
     # Clean up
     unlink $linkName;
     ok(!-e $linkName);
