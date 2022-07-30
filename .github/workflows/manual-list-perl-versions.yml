@@ -1,4 +1,4 @@
-name: List available versions of Perl
+name: Manually list available versions of Perl
 
 on:
   workflow_dispatch:
