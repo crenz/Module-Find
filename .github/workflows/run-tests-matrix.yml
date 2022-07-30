@@ -1,4 +1,4 @@
-name: Run Tests (matrixed)
+name: Tests (matrixed)
 
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-        perl: [ '5', '5.32', '5.8.9', '5.6.2' ]
+        perl: [ '5', '5.32' ]
     name: Perl ${{ matrix.perl }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
