@@ -2,7 +2,7 @@ name: Periodically run tests (matrixed on latest)
 
 on:
   schedule: 
-    cron: 0 5 15 3/4 *
+    - cron: 0 5 15 3/4 *
   workflow_dispatch:
 
 jobs:
