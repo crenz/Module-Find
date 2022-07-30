@@ -1,4 +1,4 @@
-name: Run tests (Ubuntu, Perl 5 latest)
+name: Manually run tests (Ubuntu, Perl 5 latest)
 
 on:
   workflow_dispatch:
