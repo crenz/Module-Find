@@ -1,8 +1,5 @@
-# This is a basic workflow to help you get started with Actions
+name: Run Tests (matrixed)
 
-name: Run Tests (Matrixed)
-
-# Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
@@ -10,7 +7,6 @@ on:
   pull_request:
     branches: [ "**" ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -19,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-        perl: [ '5', '5.34', '5.8.9', '5.6.2' ]
+        perl: [ '5', '5.32', '5.8.9', '5.6.2' ]
     name: Perl ${{ matrix.perl }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -27,14 +23,17 @@ jobs:
         uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: ${{ matrix.perl }}
-      - run: perl -V
-      - run: cpanm --installdeps .
-      - run: prove -lv t
+      - name: Identify perl version
+        run: perl -V
+      - name: Install dependencies
+        run: cpanm --installdeps .
+      - name: Run tests
+        run: make test TEST_VERBOSE=1
   test-strawberry:
     runs-on: 'windows-latest'
     strategy:
       matrix:
-        perl: [ '5', '5.34', '5.8.9', ]
+        perl: [ '5', '5.32' ]
     name: Perl ${{ matrix.perl }} on windows-latest (strawberry)
     steps:
       - uses: actions/checkout@v3
@@ -42,7 +41,9 @@ jobs:
         uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: ${{ matrix.perl }}
-          distribution: strawberry
-      - run: perl -V
-      - run: cpanm --installdeps .
-      - run: prove -lv t
+      - name: Identify perl version
+        run: perl -V
+      - name: Install dependencies
+        run: cpanm --installdeps .
+      - name: Run tests
+        run: make test TEST_VERBOSE=1
