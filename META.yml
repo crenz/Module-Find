@@ -17,7 +17,7 @@ build_requires:
 requires:
     File::Find:  0
     File::Spec:  0
-    perl:        5.006001
+    perl:        5.008001
     Test::More:  0
 resources:
     repository:  http://github.com/crenz/Module-Find
