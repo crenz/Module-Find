@@ -1,0 +1,26 @@
+name: Run tests (Ubuntu, Perl 5 latest)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "build"
+  tests:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.34'
+          install-modules-with: cpanm
+          install-modules-args: --with-develop --with-configure
+      - name: Identify perl version
+        run: perl -V
+      - name: Build module
+        run: perl Makefile.PL
+      - name: Run tests
+        run: prove -lv t
