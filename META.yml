@@ -1,10 +1,10 @@
 --- #YAML:1.0
 name:               Module-Find
-version:            '0.15'
+version:            '0.16'
 provides:
   Module::Find:
     file: Find.pm
-    version: '0.15'
+    version: '0.16'
 abstract:           Find and use installed modules in a (sub)category
 author:
     - Christian Renz <crenz@web42.com>
