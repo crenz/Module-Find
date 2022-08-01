@@ -24,6 +24,7 @@ t/52-pod-coverage.t
 t/test/duplicates/ModuleFindTest.pm
 t/test/duplicates/ModuleFindTest/SubMod.pm
 t/test/duplicates/ModuleFindTest/SubMod/SubSubMod.pm
+t/test/LoadFailTest/LoadFailMod.pm
 t/test/ModuleFindTest.pm
 t/test/ModuleFindTest/SubMod.pm
 t/test/ModuleFindTest/SubMod/SubSubMod.pm
